@@ -1,0 +1,291 @@
+:root{
+  --color-primary: #1E4D2B;
+  --color-secondary: #7BB17A;
+  --color-surface: #F3E8D9;
+  --color-background: #FFFFFF;
+  --color-text: #4A4A47;
+  --color-border: rgba(30, 77, 43, 0.12);
+  --color-muted: #76837E;
+  --radius: 18px;
+  --container-width: 1100px;
+  --shadow-soft: 0 18px 40px rgba(30, 77, 43, 0.08);
+  --font-heading: 'Montserrat', sans-serif;
+  --font-body: 'Inter', sans-serif;
+}
+
+*{
+  box-sizing:border-box;
+}
+html,body{
+  height:100%;
+  margin:0;
+  font-family: var(--font-body);
+  color: var(--color-text);
+  background: linear-gradient(180deg, var(--color-surface) 0%, #fff 100%);
+  -webkit-font-smoothing: antialiased;
+  scroll-behavior: smooth;
+}
+
+.container{
+  width:90%;
+  max-width:var(--container-width);
+  margin:0 auto;
+  padding:32px 0;
+}
+
+.header-inner{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+  padding:18px 0;
+}
+
+.site-header{
+  position:sticky;
+  top:0;
+  background:rgba(255,255,255,0.94);
+  backdrop-filter: blur(16px);
+  border-bottom:1px solid var(--color-border);
+  z-index:50;
+}
+
+.site-title{
+  margin:0;
+  color: var(--color-primary);
+  font-family: var(--font-heading);
+  font-size:1.2rem;
+  letter-spacing:0.35px;
+}
+
+.site-nav a{
+  margin-left:14px;
+  color: var(--color-text);
+  text-decoration:none;
+  font-weight:600;
+  padding:8px 12px;
+  border-radius:12px;
+  position:relative;
+  transition: color 220ms ease;
+}
+.site-nav a::after{
+  content:'';
+  position:absolute;
+  left:0;
+  bottom:0;
+  width:100%;
+  height:2px;
+  background: var(--color-secondary);
+  transform: scaleX(0);
+  transform-origin:left;
+  transition: transform 240ms ease;
+}
+.site-nav a:hover{
+  color: var(--color-primary);
+}
+.site-nav a:hover::after{
+  transform: scaleX(1);
+}
+
+.site-nav a.active{
+  color: var(--color-primary);
+}
+.site-nav a.active::after{
+  transform: scaleX(1);
+}
+
+.skip-link{
+  position:absolute;
+  left:-999px;
+  top:auto;
+  width:1px;
+  height:1px;
+  overflow:hidden;
+}
+.skip-link:focus{
+  left:16px;
+  top:16px;
+  width:auto;
+  height:auto;
+  padding:8px 12px;
+  background:var(--verde-escuro);
+  color:var(--branco);
+  border-radius:8px;
+  z-index:60;
+}
+
+/* Hero */
+.hero{
+  display:flex;
+  align-items:center;
+  gap:28px;
+  padding:48px 0;
+  min-height:calc(60vh - 60px);
+}
+.hero-content{
+  flex:1;
+}
+.hero-title{
+  margin:0 0 12px 0;
+  color:var(--verde-escuro);
+  font-size:clamp(1.25rem,4vw,2rem);
+}
+.hero-text{
+  margin:0;
+  max-width:700px;
+  color:var(--texto);
+  line-height:1.5;
+}
+
+/* simple decorative image block */
+.hero-image{
+  flex:1;
+  height:180px;
+  border-radius:var(--radius);
+  background:
+    radial-gradient( circle at 10% 20%, rgba(20,83,43,0.12), transparent 8%),
+    linear-gradient(135deg,#dbeadf, #f6efe6);
+  box-shadow:0 10px 20px var(--sombra);
+}
+
+.cta{
+  display:inline-block;
+  margin-top:14px;
+  background: var(--color-primary);
+  color: var(--color-background);
+  padding:12px 20px;
+  border-radius:14px;
+  text-decoration:none;
+  font-weight:700;
+  transition: transform 220ms ease, background-color 220ms ease, box-shadow 220ms ease;
+}
+.cta:hover{
+  transform: scale(1.04);
+  background: var(--color-secondary);
+  box-shadow: var(--shadow-soft);
+}
+
+/* Sections */
+.section-title{
+  margin:0 0 18px 0;
+  color:var(--verde-escuro);
+  font-size:1.1rem;
+}
+
+/* O Equilíbrio */
+.compare-grid{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:18px;
+}
+.card{
+  background:var(--branco);
+  border-radius:12px;
+  padding:20px;
+  box-shadow:0 8px 18px var(--sombra);
+  transition:transform 180ms ease, box-shadow 180ms ease;
+}
+.card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 18px 30px rgba(33,51,59,0.08);
+}
+.card-problema{
+  border-left:4px solid #c2410c;
+}
+.card-solucao{
+  border-left:4px solid var(--verde-escuro);
+}
+
+/* Dicas */
+.dicas-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:14px;
+}
+.dica{
+  background:linear-gradient(180deg,var(--bege),#fff);
+  border:1px solid rgba(33,51,59,0.04);
+  padding:18px;
+  border-radius:12px;
+  font-size:0.98rem;
+  cursor:pointer;
+  transition:transform 180ms ease, box-shadow 180ms ease, background-color 180ms;
+  box-shadow:0 8px 18px var(--sombra);
+  text-align:left;
+}
+.dica:hover{
+  transform:translateY(-6px);
+  background:linear-gradient(180deg,#f7f3ec,#fff);
+}
+
+/* Mobile nav */
+.nav-toggle{
+  display:none;
+  background:transparent;
+  border:1px solid rgba(33,51,59,0.06);
+  padding:8px 10px;
+  border-radius:8px;
+  font-size:1.05rem;
+  cursor:pointer;
+}
+
+@media (max-width:520px){
+  .nav-toggle{display:block}
+  .site-nav{position:absolute;top:64px;right:16px;background: var(--color-background);padding:14px;border-radius:16px;box-shadow:var(--shadow-soft);display:none;flex-direction:column;min-width:220px}
+  .site-nav a{margin:8px 0}
+  .site-nav.open{display:flex}
+}
+
+/* Agro */
+.agro-content{
+  padding:22px;
+  background:linear-gradient(180deg,#f7fbf9,#fff);
+  border-left:4px solid var(--verde-escuro);
+}
+
+/* Footer */
+.site-footer{
+  padding:28px 0;
+  background:transparent;
+  border-top:1px solid rgba(33,51,59,0.04);
+}
+.footer-inner{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
+  flex-wrap:wrap;
+  color:#5a6b63;
+  font-size:0.95rem;
+}
+
+/* Responsividade */
+@media (max-width:900px){
+  .compare-grid{grid-template-columns:1fr}
+  .dicas-grid{grid-template-columns:repeat(2,1fr)}
+  .hero{flex-direction:column}
+  .hero-image{width:100%}
+}
+
+@media (max-width:520px){
+  .dicas-grid{grid-template-columns:1fr}
+  .site-nav{display:none}
+  .header-inner{justify-content:center}
+  .site-title{font-size:1rem}
+}
+
+/* Ajuste para o header fixo: evita que o conteúdo fique escondido ao rolar */
+section{scroll-margin-top:88px}
+
+.fade-in{
+  opacity: 0;
+  transform: translateY(14px);
+  animation: fadeInUp 0.9s ease forwards;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
